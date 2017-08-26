@@ -10,7 +10,7 @@ class Task extends Model
     	'task_title', 'task' , 'project_id', 'priority'
      ] ;
 
-     // this task belongs to a Project
+     // this task belongs to a Project - One to One
      public function project() {
      	return $this->belongsTo('App\Project') ;
      }
