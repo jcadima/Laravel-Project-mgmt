@@ -1,19 +1,17 @@
 # Laravel Project Task Manager
 
-A simple web application built with Laravel 5.4.33
+A simple task manager app built with Laravel 5.4.33
 
-New functionality will be added weekly.
+Work in progress, project will be updated weekly.
 
-# DEMO
-[demo](http://laravelproject.juancadima.com/)
 
 ### Todos && Features
-
-* [x] Demo Login
-* [x] Assign Tasks to Project
-* [x] Assign Task Priority
-* [x] Assign Task Status
-* [x] Edit/Delete Tasks
-* [x] Added Summernote WYSIWYG editor for Tasks
+* [X] Create Models
+* [ ] Assign Tasks to Project
+* [ ] Assign Task Priority
+* [ ] Assign Task Status
+* [ ] Edit/Delete Tasks
+* [ ] Demo Login
+* [ ] Added Summernote WYSIWYG editor for Tasks
 * [ ] Add Pagination
 
