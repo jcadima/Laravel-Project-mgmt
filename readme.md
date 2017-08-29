@@ -10,6 +10,7 @@ Work in progress, project will be updated weekly.
 * [ ] Assign Tasks to Project
 * [ ] Assign Task Priority
 * [ ] Assign Task Status
+* [ ] Implement Cascade down on delete project
 * [ ] Edit/Delete Tasks
 * [ ] Demo Login
 * [ ] Added Summernote WYSIWYG editor for Tasks
