@@ -7,7 +7,7 @@ Work in progress, project will be updated weekly.
 
 ### Todos && Features
 * [X] Create Models
-* [X] Create blade layouts
+* [X] Create blade includes
 * [ ] Assign Tasks to Project
 * [ ] Assign Task Priority
 * [ ] Assign Task Status
