@@ -24,7 +24,7 @@
     @if ( $user->id == 0 )  @continue 
     @endif
       <tr>
-        <td><a href="{{ route('task.list', ['id'=> $user->id] ) }}">{{ $user->name }}</a></td>
+        <td><a href="{{ route('user.list', ['id'=> $user->id] ) }}">{{ $user->name }}</a></td>
 
         <td>{{ $user->email }}</td>
     
