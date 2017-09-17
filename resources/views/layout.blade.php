@@ -98,11 +98,11 @@
         </nav>
 
         <section class="main-content">
-        <div class="container">   
-           
-                @yield('content')
-            
-        </div>
+	        <div class="container">   
+	           
+	                @yield('content')
+	            
+	        </div>
         </section>
 
         <!--   FOOTER -->
