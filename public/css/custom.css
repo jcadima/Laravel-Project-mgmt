@@ -1,0 +1,163 @@
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700'); */
+
+@font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    src: url('gfonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-style: bold;
+    font-weight: 700;
+    src: url('gfonts/Montserrat-Bold.ttf');
+}
+
+
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: Montserrat;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+
+body#app {
+    background: url(http://laraproject.dev/img/bodybg-min.png);
+}
+
+.navbar-default {
+    background-color: #2E3244;
+}
+
+nav#myNavbar a {
+    color: #fff;
+}
+
+ul.dropdown-menu {
+    background: #2e3244;
+}
+
+.dropdown-menu>li>a:hover {
+    text-decoration: none;
+    background-color: #e75f2d;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #e75f2d;
+}
+
+.full-height {
+    height: 100vh;
+}
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.panel-default>.panel-heading {
+    color: #fff;
+    border-color: #d3e0e9;
+    background: #3c4056;
+    background: -moz-linear-gradient(top,rgba(60,64,86,1) 0,rgba(46,50,68,1) 41%,rgba(46,50,68,1) 100%);
+    background: -webkit-linear-gradient(top,rgba(60,64,86,1) 0,rgba(46,50,68,1) 41%,rgba(46,50,68,1) 100%);
+    background: linear-gradient(to bottom,rgba(60,64,86,1) 0,rgba(46,50,68,1) 41%,rgba(46,50,68,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c4056', endColorstr='#2e3244', GradientType=0 );
+}
+
+.panel-default {
+    background: #f1e8c9;
+    background: -moz-linear-gradient(top,rgba(241,232,201,1) 0,rgba(225,219,196,1) 41%,rgba(191,186,167,1) 100%);
+    background: -webkit-linear-gradient(top,rgba(241,232,201,1) 0,rgba(225,219,196,1) 41%,rgba(191,186,167,1) 100%);
+    background: linear-gradient(to bottom,rgba(241,232,201,1) 0,rgba(225,219,196,1) 41%,rgba(191,186,167,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e8c9', endColorstr='#bfbaa7', GradientType=0 );
+}
+
+.position-ref {
+    position: relative;
+}
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.label {
+    font-size: 100%;
+}
+
+.title {
+    font-size: 24px;
+}
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.navbar .divider-vertical {
+    height: 50px;
+    margin: 0 9px;
+    border-right: 1px solid #8d8d8d;
+    border-left: 1px solid #8d8d8d;
+}
+
+.navbar-inverse .divider-vertical {
+    border-right-color: #222222;
+    border-left-color: #111111;
+}
+
+.label-jc {
+    background: #E75F2D;
+}
+
+.label-jc a { color: #fff ; }
+
+/* Hide Insert Picture in summer note */
+.note-btn-group.btn-group.note-insert button:nth-child(2) {
+    display: none !important;
+}
+
+ul#images_col img {
+    max-height: 100px;
+}
+
+.footer-bottom {
+    background: #2E3244;
+    color:#fff ;
+    padding: 20px 15px;
+    margin-top: 20px;
+}
+
+.footer-bottom a {
+    color: #fff;
+}
+
+ul#images_col {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.btn-primary { background-color: #2e3244; }
+
+.pagination>.active>span  { background-color: #2e3244; }
+
+/*  =================== MEDIA QUERIES ================== */
+
+
+@media (max-width: 767px) {
+    .navbar-collapse .nav > .divider-vertical {
+        display: none;
+     }
+} 
