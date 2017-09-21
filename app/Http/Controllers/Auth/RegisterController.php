@@ -27,7 +27,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // this redirects the user after a successful registration, overrides 
+    // the file: RedirectifAuthenticated.php
+    // protected $redirectTo = '/home';
+     // protected $redirectTo = '/admin/projects';
+     protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -36,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+         $this->middleware('guest');
     }
 
     /**

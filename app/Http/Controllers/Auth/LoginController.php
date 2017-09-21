@@ -25,7 +25,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/projects';  // to where you want to go after a successful login
+
 
     /**
      * Create a new controller instance.
@@ -36,4 +38,19 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // public function logout () {
+    //     //logout user
+    //     auth()->logout();
+    //     // redirect to homepage or login
+    //     return redirect('/login');
+    // }
+
+
+
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        return ['email' => $request->{$this->username()}, 'password' => $request->password, 'admin' => 1];
+    }    
+
 }
