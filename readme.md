@@ -8,13 +8,13 @@ Work in progress, project will be updated weekly.
 ### Todos && Features
 * [X] Create Models
 * [X] Create blade includes
-* [ ] Assign Tasks to Project
-* [ ] Assign Task Priority
-* [ ] Assign Task Status
-* [ ] Implement Cascade down on delete project
-* [ ] Edit/Delete Tasks
-* [ ] Demo Login
-* [ ] Added Summernote WYSIWYG editor for Tasks
-* [ ] Add Pagination
-* [ ] Restrict new user registration (Admin approval)
+* [X] Assign Tasks to Project
+* [X] Assign Task Priority
+* [X] Assign Task Status
+* [X] Implement Cascade down on delete project
+* [X] Edit/Delete Tasks
+* [X] Demo Login
+* [X] Added Summernote WYSIWYG editor for Tasks
+* [X] Add Pagination
+* [X] Restrict new user registration (Admin approval)
 
