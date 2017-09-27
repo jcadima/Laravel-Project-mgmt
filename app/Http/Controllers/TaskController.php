@@ -55,9 +55,10 @@ class TaskController extends Controller
                 // store images only in one array
                 // $taskfile[0] = filename
                 // $taskfile[1] = jpg
+                // check if extension is a image filetype
                 if ( in_array($taskfile[1], $images_array ) ) 
                     $images_set[] = $taskfile[0] . '.' . $taskfile[1] ;
-                    // the rest non image files are stored here
+                    // if not an image, store in files array
                 else
                     $files_set[] = $taskfile[0] . '.' . $taskfile[1]; 
             }
@@ -67,10 +68,10 @@ class TaskController extends Controller
 
         // Get task created and due dates
         $from = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $task_view->created_at);
-        $to = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $task_view->duedate ); // add here the due date from create task
+        $to   = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $task_view->duedate ); // add here the due date from create task
 
         $current_date = \Carbon\Carbon::now();
-
+ 
         // Format dates for Humans
         $formatted_from = $from->toRfc850String();  
         $formatted_to   = $to->toRfc850String();
@@ -80,7 +81,7 @@ class TaskController extends Controller
         $diff_in_days = $current_date->diffInDays($to);
 
         // Check for overdue tasks
-        $is_overdue = ($from->gt($to) ) ? true : false ;
+        $is_overdue = ($current_date->gt($to) ) ? true : false ;
 
         // $task_view->project->project_name   will output the project name for this specific task
         // to populate the right sidebar with related tasks
@@ -217,9 +218,10 @@ class TaskController extends Controller
     {
 // $project::find(1)->tasks; retrieves the project record with id 1 and lists all tasks that have the project_id 1.
 
-        //$task_edit = Task::find($id)->projects ; // NULL
+        // $task_list = Task::where('project_id','=' , $projectid)->get();
         $task = Task::find($id)  ; 
-        // dd($task) ;
+        $taskfiles = TaskFiles::where('task_id', '=', $id)->get() ;
+        // dd($taskfiles) ;
         $projects = Project::all() ;
         $users = User::all() ;
         //$project_edit = Project::find($id)->tasks ; 
@@ -233,7 +235,8 @@ class TaskController extends Controller
         //$project_edit = Project::find($id) ;
         return view('task.edit')->with('task', $task)
                                 ->with('projects', $projects ) 
-                                ->with('users', $users);
+                                ->with('users', $users)
+                                ->with('taskfiles', $taskfiles);
     }
 
     /**
@@ -297,6 +300,13 @@ class TaskController extends Controller
         $delete_task->delete() ;
         Session::flash('success', 'Task was deleted') ;
         return redirect()->back();
+    }
+
+    public function deleteFile($id) {
+        $delete_file = TaskFiles::find($id) ;
+        $delete_file->delete() ;
+        Session::flash('success', 'File Deleted') ;
+        return redirect()->back(); 
     }
 
     public function searchTask() {
