@@ -64,6 +64,7 @@
         <td>
             @if ( !$task->completed )
                 <a href="{{ route('task.completed', ['id' => $task->id]) }}" class="btn btn-warning"> Mark as completed</a>
+                <span class="label label-danger">{{ ( $task->duedate < Carbon\Carbon::now() )  ? "!" : "" }}</span>
             @else
                 <span class="label label-success">Completed</span>
             @endif
