@@ -8,7 +8,7 @@ A simple task manager app built with Laravel 5.4.33
 
 
 ### Demo login info:
-user: demo@test.com
+user: demo@test.com <br/>
 pass: demo2017
 
 
@@ -30,9 +30,13 @@ pass: demo2017
 
 
 ### Screenshots
-![alt Login](http://juancadima.com/wp-content/uploads/login.jpg)
 
+![alt LoginDemo](http://juancadima.com/wp-content/uploads/login.jpg)
+<br/>
 ![alt AllTasks](http://juancadima.com/wp-content/uploads/alltasks.jpg)
+<br/>
 ![alt CreateTask](http://juancadima.com/wp-content/uploads/createtask.jpg)
+<br/>
 ![alt ActiveProjects](http://juancadima.com/wp-content/uploads/listofactiveprojects.jpg)
+<br/>
 ![alt TaskView](http://juancadima.com/wp-content/uploads/taskview.jpg)
