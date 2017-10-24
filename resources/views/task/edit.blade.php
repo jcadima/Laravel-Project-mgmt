@@ -35,6 +35,19 @@
 			<textarea class="form-control" rows="5" id="summernote" name="task">{{ $task->task }}</textarea>
 		</div>
 
+		<div class="form-group">
+		@if( count($taskfiles) > 0  )
+		<label>Files</label>
+		<ul class="fileslist">
+           	@foreach( $taskfiles as $file) 
+			    <li>{{ $file->filename }} <span>&nbsp;&nbsp;</span> <a class="btn btn-danger" href="{{ route('task.deletefile', [ 'id' => $file->id]) }}">
+			   		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+				</li>
+			@endforeach
+		</ul>
+		@endif
+       	</div>
+
 	</div>
 
 	<div class="col-md-4">

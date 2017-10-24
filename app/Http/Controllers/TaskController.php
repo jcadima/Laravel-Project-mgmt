@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Input;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+/*===============================================
+    DISPLAY ALL TASKS
+===============================================*/
     public function index()
     {
         // dd() ;
@@ -29,6 +28,9 @@ class TaskController extends Controller
                                  ->with('users', $users ) ;
     }
 
+/*===============================================
+    DISPLAY TASK LIST
+===============================================*/
     public function tasklist( $projectid ) {
 
         // dd($projectid);
@@ -40,7 +42,9 @@ class TaskController extends Controller
                                 ->with('task_list', $task_list) ;
     }
 
-
+/*===============================================
+    VIEW TASK
+===============================================*/
     public function view($id)  {
         $images_set = [] ;
         $files_set = [] ;
@@ -98,7 +102,9 @@ class TaskController extends Controller
             ->with('files_set', $files_set) ;
     }
 
-
+/*===============================================
+    SORT TASKS BY COLUM KEY
+===============================================*/
     public function sort( $key ) {
         $users = User::all() ;
         // dd ($key) ; 
@@ -118,11 +124,9 @@ class TaskController extends Controller
                                 ->with('tasks', $tasks) ;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+/*===============================================
+    CREATE NEW TASK
+===============================================*/
     public function create()
     {
         $projects = Project::all()  ;
@@ -131,12 +135,9 @@ class TaskController extends Controller
                                   ->with('users', $users) ;        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+/*===============================================
+    SAVE TASK TO DB
+===============================================*/
     public function store(Request $request)
     {
         // dd($request->all() ) ;
@@ -199,7 +200,9 @@ class TaskController extends Controller
 
     }
 
-
+/*===============================================
+    MARK TASK COMPLETE
+===============================================*/
     public function completed($id)
     {
         $task_complete = Task::find($id) ;
@@ -208,44 +211,26 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/*===============================================
+    EDIT TASK
+===============================================*/
     public function edit($id)
     {
-// $project::find(1)->tasks; retrieves the project record with id 1 and lists all tasks that have the project_id 1.
-
-        // $task_list = Task::where('project_id','=' , $projectid)->get();
         $task = Task::find($id)  ; 
         $taskfiles = TaskFiles::where('task_id', '=', $id)->get() ;
         // dd($taskfiles) ;
         $projects = Project::all() ;
         $users = User::all() ;
-        //$project_edit = Project::find($id)->tasks ; 
-        // echo '<pre>';
-        // print_r( Project::all() );
-        // echo '</pre>';
 
-        // dd($task_edit) ;  // returns NULL
-
-        //dd($task_edit) ;  // Works
-        //$project_edit = Project::find($id) ;
         return view('task.edit')->with('task', $task)
                                 ->with('projects', $projects ) 
                                 ->with('users', $users)
                                 ->with('taskfiles', $taskfiles);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/*===============================================
+    UPDATE TASK
+===============================================*/
     public function update(Request $request, $id)
     {
         // dd( $request->all() ) ;
@@ -288,12 +273,9 @@ class TaskController extends Controller
         return redirect()->route('task.show') ;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+/*===============================================
+    DELETE
+===============================================*/
     public function destroy($id)
     {
         $delete_task = Task::find($id) ;
@@ -302,6 +284,9 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
+/*===============================================
+    DELETE FILE
+===============================================*/
     public function deleteFile($id) {
         $delete_file = TaskFiles::find($id) ;
         $delete_file->delete() ;
@@ -309,6 +294,9 @@ class TaskController extends Controller
         return redirect()->back(); 
     }
 
+/*===============================================
+    SEARCH TASK
+===============================================*/
     public function searchTask() {
         $value = Input::get('search_task');
         $tasks = Task::where('task', 'LIKE', '%' . $value . '%')->limit(25)->get();
