@@ -153,6 +153,16 @@ ul#images_col {
 
 .pagination>.active>span  { background-color: #2e3244; }
 
+.panel-jc>.panel-heading {
+    color: #fff;
+    background-color: #2f3345;
+    border-color: #2f3345;
+}
+
+.panel-body {
+    border: 1px solid #303446;
+}
+
 /*  =================== MEDIA QUERIES ================== */
 
 
