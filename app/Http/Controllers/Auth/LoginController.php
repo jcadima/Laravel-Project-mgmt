@@ -26,7 +26,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = '/home';
-    protected $redirectTo = '/admin/projects';  // to where you want to go after a successful login
+    protected $redirectTo = '/admin/tasks';  // to where you want to go after a successful login
 
 
     /**
