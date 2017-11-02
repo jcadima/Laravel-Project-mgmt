@@ -21,7 +21,7 @@ task_view->id: {{ $task_view->id }}<br>
 
     <div class="btn-group">
         <a href="{{ route('task.edit', ['id' => $task_view->id ]) }}" class="btn btn-primary"> edit </a>
-        <a class="btn btn-default" href="{{ redirect()->getUrlGenerator()->previous() }}">Go Back</a>
+        <a class="btn btn-default" href="{{ route('task.show')  }}">Go Back</a>
     </div>
 
     <div class="row">
@@ -112,7 +112,6 @@ task_view->id: {{ $task_view->id }}<br>
         </div>
     </div>
 
-    <hr>
 
     <div class="panel panel-jc">
         <div class="panel-heading">Created</div>
@@ -128,17 +127,11 @@ task_view->id: {{ $task_view->id }}<br>
         </div>
     </div>
 
-    <div class="panel panel-jc">
-        <div class="panel-heading">Alert</div>
-        <div class="panel-body">
-            {{ $formatted_to }} 
-        </div>
-    </div>
 
 </div>
 
 
-
+https://www.youtube.com/watch?v=xBOqwRRj82A
 
 @stop
 
