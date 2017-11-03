@@ -149,6 +149,14 @@ ul#images_col {
     padding-left: 0;
 }
 
+ul.fileslist li {
+    padding-bottom: 10px;
+}
+
+.new_project {
+    padding-bottom: 25px;
+}
+
 .btn-primary { background-color: #2e3244; }
 
 .pagination>.active>span  { background-color: #2e3244; }
@@ -161,6 +169,17 @@ ul#images_col {
 
 .panel-body {
     border: 1px solid #303446;
+}
+
+.modal-header .close {
+    margin-top: -2px;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.modal-header {
+    background: #2f3345;
+    color: #fff;
 }
 
 /*  =================== MEDIA QUERIES ================== */
