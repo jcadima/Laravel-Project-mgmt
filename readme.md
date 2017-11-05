@@ -27,6 +27,7 @@ pass: demo2017
 * [X] Added Summernote WYSIWYG editor for Tasks
 * [X] Add Pagination
 * [X] Restrict new user registration (Admin approval)
+* [X] Add Modal box for Project and User creation
 
 
 ### Screenshots
