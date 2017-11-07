@@ -40,4 +40,6 @@ pass: demo2017
 <br/>
 ![alt ActiveProjects](http://juancadima.com/wp-content/uploads/listofactiveprojects.jpg)
 <br/>
-![alt TaskView](http://juancadima.com/wp-content/uploads/taskview.jpg)
+![alt TaskView](http://juancadima.com/wp-content/uploads/users.jpg)
+<br>
+![alt TaskView](http://juancadima.com/wp-content/uploads/newuser.jpg)
