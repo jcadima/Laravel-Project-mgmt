@@ -18,7 +18,8 @@ pass: demo2017
 * [X] Assign Tasks to Project
 * [X] Assign Task Priority
 * [X] Assign Task Status
-* [X] Implement Cascade down on delete project
+* [X] Add Toastr Notifications
+* [X] Implement Cascade down on delete
 * [X] Delete associated tasks that belong to a user
 * [X] Edit/Delete Tasks
 * [X] Sort by column
@@ -38,7 +39,11 @@ pass: demo2017
 <br/>
 ![alt CreateTask](http://juancadima.com/wp-content/uploads/createtask.jpg)
 <br/>
-![alt ActiveProjects](http://juancadima.com/wp-content/uploads/listofactiveprojects.jpg)
+![alt ActiveProjects](http://juancadima.com/wp-content/uploads/listofactiveprojects.png)
+<br/>
+![alt ActiveProjects](http://juancadima.com/wp-content/uploads/newproject.png)
+<br>
+![alt TaskView](http://juancadima.com/wp-content/uploads/singletask.png)
 <br/>
 ![alt TaskView](http://juancadima.com/wp-content/uploads/users.png)
 <br>
