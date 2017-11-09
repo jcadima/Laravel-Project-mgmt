@@ -29,7 +29,7 @@ pass: demo2017
 * [X] Add Pagination
 * [X] Restrict new user registration (Admin approval)
 * [X] Add Modal box for Project and User creation
-
+* [X] Add lightbox to image gallery
 
 ### Screenshots
 

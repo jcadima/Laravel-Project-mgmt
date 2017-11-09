@@ -130,12 +130,17 @@ task_view->id: {{ $task_view->id }}<br>
 
 </div>
 
+@stop
 
-https://www.youtube.com/watch?v=xBOqwRRj82A
-
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
 @stop
 
 
+@section('scripts')
+    <script src="{{ asset('js/lightbox.min.js') }}"></script>  
+
+@stop
 
 
 
