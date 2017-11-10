@@ -35,7 +35,9 @@ task_view->id: {{ $task_view->id }}<br>
                         <ul id="images_col">
                             @foreach ( $images_set as $image )
                                 <li> 
-                                    <a target="_blank"href="<?php echo asset("images/$image") ?>"><img class="img-responsive" src="<?php echo asset("images/$image") ?>"></a>
+                                    <a href="<?php echo asset("images/$image") ?>" data-lightbox="images-set">
+                                        <img class="img-responsive" src="<?php echo asset("images/$image") ?>">
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>

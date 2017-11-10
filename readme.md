@@ -2,6 +2,14 @@
 
 A simple task manager app built with Laravel 5.4.33
 
+### Demo
+[Task Management Demo](http://taskmanager.juancadima.com/)
+
+
+### Demo login info:
+user: demo@test.com <br/>
+pass: demo2017
+
 ### How to install
 1) Simply [download](https://github.com/jcadima/Laravel-Project-mgmt/archive/master.zip) or clone the repo:
 ```
@@ -11,7 +19,7 @@ git clone git@github.com:jcadima/Laravel-Project-mgmt.git
 2) Import database
 [Task Management DB](https://github.com/jcadima/Laravel-Project-mgmt/blob/master/project_mgmt.sql)
 
-*NOTE*: If using MariaBD you might see an error about "key too long", to fix this open:
+**NOTE**: If using MariaDB you might see an error about "key too long", to fix this open:
 ```
  /app/Providers/AppServiceProvider.php
 ```
@@ -52,10 +60,10 @@ and create a new entry for your project:
 127.0.0.1  laraproject.dev
 ```
 
-4) open your vhosts file to create a [Virtual host](http://juancadima.com/creating-a-virtual-host-in-xampp-linux/) for this new entry, depending on your system your *httpd-vhosts.conf* might be located in one of the following:
+4) open your vhosts file to create a [Virtual host](http://juancadima.com/creating-a-virtual-host-in-xampp-linux/) for this new entry, depending on your system your **httpd-vhosts.conf** might be located in one of the following:
 
 ```
-sudo vim /opt/lampp/etc/httpd.conf
+sudo vim /opt/lampp/etc/httpd.conf  OR
 sudo vim /Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf
 ```
 
@@ -81,7 +89,8 @@ http://laraproject.dev
 ```
 
 ### Database table schemas
-*migrations*
+**migrations**
+
 ```
 +-----------+------------------+------+-----+---------+----------------+
 | Field     | Type             | Null | Key | Default | Extra          |
@@ -92,7 +101,8 @@ http://laraproject.dev
 +-----------+------------------+------+-----+---------+----------------+
 ```
 
-*projects*
+**projects**
+
 ```
 +--------------+------------------+------+-----+---------+----------------+
 | Field        | Type             | Null | Key | Default | Extra          |
@@ -104,7 +114,8 @@ http://laraproject.dev
 +--------------+------------------+------+-----+---------+----------------+
 ```
 
-*task_files*
+**task_files**
+
 ```
 +------------+------------------+------+-----+---------+----------------+
 | Field      | Type             | Null | Key | Default | Extra          |
@@ -117,7 +128,8 @@ http://laraproject.dev
 +------------+------------------+------+-----+---------+----------------+
 ```
 
-*tasks*
+**tasks**
+
 ```
 +------------+------------------+------+-----+---------+----------------+
 | Field      | Type             | Null | Key | Default | Extra          |
@@ -135,7 +147,8 @@ http://laraproject.dev
 +------------+------------------+------+-----+---------+----------------+
 ```
 
-*users*
+**users**
+
 ```
 +----------------+------------------+------+-----+---------+----------------+
 | Field          | Type             | Null | Key | Default | Extra          |
@@ -150,15 +163,6 @@ http://laraproject.dev
 | updated_at     | timestamp        | YES  |     | NULL    |                |
 +----------------+------------------+------+-----+---------+----------------+
 ```
-
-
-### Demo
-[Task Management Demo](http://taskmanager.juancadima.com/)
-
-
-### Demo login info:
-user: demo@test.com <br/>
-pass: demo2017
 
 
 ### Todos && Features

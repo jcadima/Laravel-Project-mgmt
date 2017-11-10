@@ -182,6 +182,10 @@ ul.fileslist li {
     color: #fff;
 }
 
+ul#images_col li {
+    padding-bottom: 10px;
+}
+
 /*  =================== MEDIA QUERIES ================== */
 
 
