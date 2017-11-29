@@ -20,8 +20,6 @@ class TaskController extends Controller
 ===============================================*/
     public function index()
     {
-        // dd() ;
-        // $tasks = Task::all() ;  // retrieve all Tasks
         $users =  User::all() ; 
         $tasks  = Task::orderBy('created_at', 'desc')->paginate(10) ;  // Paginate Tasks 
         return view('task.tasks')->with('tasks', $tasks) 
@@ -252,7 +250,7 @@ class TaskController extends Controller
         $update_task->completed  = $request->completed;
         $update_task->duedate    = $request->duedate;
 
-        if ( $request->file('photos' ) != ''  ) {
+        if( $request->hasFile('photos') ) {
             foreach ($request->photos as $file) {
                 // If you want to save into  /public/images
                 $filename = $file->getClientOriginalName();  // get original file name ex:   cat.jpg
