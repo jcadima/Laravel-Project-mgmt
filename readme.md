@@ -16,7 +16,7 @@ pass: demo2017
 git clone git@github.com:jcadima/Laravel-Project-mgmt.git
 ```
 
-2) Import database
+2a) Import database and modify your .env file
 [Task Management DB](https://github.com/jcadima/Laravel-Project-mgmt/blob/master/project_mgmt.sql)
 
 **NOTE**: If using MariaDB you might see an error about "key too long", to fix this open:
@@ -50,6 +50,26 @@ class AppServiceProvider extends ServiceProvider
 }
 
 ```
+
+OR
+
+
+2b) Run the database seeder:
+
+```
+php artisan db:seed
+```
+
+The project comes with a UsersTableSedder.php class with the following:
+
+```php
+        App\User::create([
+            'name' => 'Demo User',
+            'email' => 'demo@test.com',
+            'password' => bcrypt('demo2017') 
+        ]);
+```
+
 
 3) open your hosts file:
 ```
