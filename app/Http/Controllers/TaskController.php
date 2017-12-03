@@ -165,18 +165,12 @@ class TaskController extends Controller
             ]);
 
             // Then save files using the newly created ID above
-            if ( $request->file('photos' ) != ''  ) { 
+            if( $request->hasFile('photos') ) {
                 foreach ($request->photos as $file) {
-                    // To Storage
-                    //$filename = $file->store('public'); // /storage/app/public
 
-                    // filename will be saved as: public/wKZsF9ltDSNj82ynh.png
-                    // explode this value at / and get the second element
-                    // $filename = explode("/", $filename ) ; // FOR STORAGE
-
-                    // If you want to save into  /public/images
-                    $filename = $file->getClientOriginalName();  // get original file name ex:   cat.jpg
-                    $file->move('images',$filename);
+                    // remove whitespaces and dots from filenames : [' ' => '', '.' => ''] 
+                    $filename = strtr( pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME) , [' ' => '', '.' => ''] ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                    $file->move('images', $filename);
 
                     // save to DB
                     TaskFiles::create([
@@ -252,8 +246,8 @@ class TaskController extends Controller
 
         if( $request->hasFile('photos') ) {
             foreach ($request->photos as $file) {
-                // If you want to save into  /public/images
-                $filename = $file->getClientOriginalName();  // get original file name ex:   cat.jpg
+                // remove whitespaces and dots in filenames : [' ' => '', '.' => ''] 
+                $filename = strtr( pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME) , [' ' => '', '.' => ''] ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
                 $file->move('images',$filename);
 
                 // save to DB
@@ -287,6 +281,10 @@ class TaskController extends Controller
 ===============================================*/
     public function deleteFile($id) {
         $delete_file = TaskFiles::find($id) ;
+        // remove  file from public directory
+        unlink( public_path() . '/images/' . $delete_file->filename ) ;
+
+        // delete  from database        
         $delete_file->delete() ;
         Session::flash('success', 'File Deleted') ;
         return redirect()->back(); 

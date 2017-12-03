@@ -203,7 +203,7 @@ http://laraproject.dev
 * [X] Restrict new user registration (Admin approval)
 * [X] Add Modal box for Projects and User creation
 * [X] Add lightbox to image gallery
-* [ ] Clean filenames before uploading: blank spaces, dots
+* [X] Clean filenames before uploading: blank spaces, dots
 
 ### Screenshots
 
