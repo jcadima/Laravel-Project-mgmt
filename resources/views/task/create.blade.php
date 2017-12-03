@@ -11,6 +11,7 @@
         <label>Create new task <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></label>
 
         <div class="form-group">
+        <label>Add Files (png,gif,jpeg,jpg,txt,pdf,doc) <span class="glyphicon glyphicon-file" aria-hidden="true"></span></label>        
             <input type="text" class="form-control" placeholder="Enter Task Title" name="task_title">
         </div>
 

@@ -27,6 +27,7 @@
 		</div>
 
 		<div class="form-group">
+        <label>Add Files (png,gif,jpeg,jpg,txt,pdf,doc) <span class="glyphicon glyphicon-file" aria-hidden="true"></span></label>			
            	<input type="file" class="form-control" name="photos[]" multiple>
        	</div>
 
@@ -37,7 +38,7 @@
 
 		<div class="form-group">
 		@if( count($taskfiles) > 0  )
-		<label>Files</label>
+		<label>Project Files</label>
 		<ul class="fileslist">
            	@foreach( $taskfiles as $file) 
 			    <li>{{ $file->filename }} <span>&nbsp;&nbsp;</span> <a class="btn btn-danger" href="{{ route('task.deletefile', [ 'id' => $file->id]) }}">

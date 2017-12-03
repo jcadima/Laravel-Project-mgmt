@@ -30,7 +30,7 @@ task_view->id: {{ $task_view->id }}<br>
             <div class="col-md-6">
 
                 <div class="panel panel-jc">
-                    <div class="panel-heading">Images</div>
+                    <div class="panel-heading">Uploaded Images</div>
                     <div class="panel-body">
                         <ul id="images_col">
                             @foreach ( $images_set as $image )
@@ -53,7 +53,7 @@ task_view->id: {{ $task_view->id }}<br>
             <div class="col-md-6">
 
                 <div class="panel panel-jc">
-                    <div class="panel-heading">Files</div>
+                    <div class="panel-heading">Uploaded Files</div>
                     <div class="panel-body">
                         <ul id="images_col">
                             @foreach ( $files_set as $file )
