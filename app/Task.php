@@ -7,12 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     protected $fillable = [ 
-    	'task_title', 'task' , 'project_id', 'priority'
+    	'project_id','user_id', 'task_title', 'task' , 'priority', 'duedate'
      ] ;
 
-     // this task belongs to a Project - One to One
+
      public function project() {
      	return $this->belongsTo('App\Project') ;
+     }
+
+     public function user() {
+         return $this->belongsTo('App\User') ;
+     }
+
+     public function taskfiles() {
+         return $this->hasMany('App\TaskFiles') ;
      }
 
 }
