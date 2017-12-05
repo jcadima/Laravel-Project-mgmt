@@ -1,7 +1,7 @@
 # Laravel Project Task Manager
 
 A simple task manager app built with Laravel 5.4.33
-
+  
 ### Demo
 [Task Management Demo](http://taskmanager.juancadima.com/)
 
