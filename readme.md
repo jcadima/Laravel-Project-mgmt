@@ -13,7 +13,7 @@ pass: demo2017
 ### How to install
 1) Simply [download](https://github.com/jcadima/Laravel-Project-mgmt/archive/master.zip) or clone the repo:
 ```
-git clone git@github.com:jcadima/Laravel-Project-mgmt.git
+git clone https://github.com/jcadima/Laravel-Project-mgmt.git
 ```
 
 2a) Import database and modify your .env file
