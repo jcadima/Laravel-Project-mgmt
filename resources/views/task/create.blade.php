@@ -20,7 +20,7 @@
        	</div>
 
         <div class="form-group">
-            <textarea class="form-control" rows="10" id="summernote" name="task"></textarea>
+            <textarea class="form-control my-editor" rows="10" id="task" name="task"></textarea>
         </div>
         
     </div>
@@ -79,22 +79,21 @@
 
 @section('styles')
 
-    <link rel="stylesheet" href="{{ asset('css/summernote.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 
 @stop
 
 
 @section('scripts')
-    <script src="{{ asset('js/summernote.min.js') }}"></script>  
 
     <script src="{{ asset('js/moment.js') }}"></script> 
 
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>  
 
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
     <script>
         jQuery(document).ready(function() {
-            jQuery('#summernote').summernote({ height: 300});  // 300px height for summernote
 
             jQuery(function() {
                 jQuery('#datetimepicker1').datetimepicker( {
@@ -106,18 +105,54 @@
         });
     </script>
 
+<script>
+  console.log(" {{ url('/') }}" ) ;
+  var editor_config = {
+    //path_absolute : "/",
+    path_absolute:"{{ url('/') }}/",
+    selector: "textarea.my-editor",
+    plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars code fullscreen",
+      "insertdatetime media nonbreaking save table contextmenu directionality",
+      "emoticons template paste textcolor colorpicker textpattern"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+    relative_urls: false,
+    file_browser_callback : function(field_name, url, type, win) {
+      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+      var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+
+      var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+      if (type == 'image') {
+        cmsURL = cmsURL + "&type=Images";
+      } else {
+        cmsURL = cmsURL + "&type=Files";
+      }
+
+      tinyMCE.activeEditor.windowManager.open({
+        file : cmsURL,
+        title : 'Filemanager',
+        width : x * 0.8,
+        height : y * 0.8,
+        resizable : "yes",
+        close_previous : "no"
+      });
+    },
+    //  Add Bootstrap Image Responsive class for inserted images
+    image_class_list: [
+        {title: 'None', value: ''},
+        {title: 'Bootstrap responsive image', value: 'img-responsive'},
+    ]   
+
+
+  };
+
+  tinymce.init(editor_config);
+</script>
+
+
 @stop
 
-
-<script>
-function validateForm() {
-    var task = document.forms["task_form"]["task"].value;
-
-    if ( !task.length ) {
-        swal("Enter Task Description", "" , "warning") ;
-        return false;
-    }
-}
-</script>
 
 
