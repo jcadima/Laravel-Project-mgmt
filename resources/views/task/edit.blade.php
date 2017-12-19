@@ -1,23 +1,14 @@
 @extends('layout')
 
-@section('content')
+@section('styles')
+	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+@stop
 
+@section('content')
 
 <form action="{{ route('task.update', [ 'id' => $task->id ] ) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
 	<input type="hidden" name="task_id" value="{{ $task->id }}">
-
-<!--
-    @foreach( $projects as $project)
-    <hr>
-    	<strong>Project Name: </strong> {{ $project->project_name }} 
-    	<strong>Project ID: </strong> {{ $project->id }} 
-    	<strong>Task->Project->ID: </strong> {{  $task->project->id }}
-
-    <hr>
-    @endforeach
--->
-
 
     <div class="col-md-8">
 
@@ -137,13 +128,6 @@
 
 </form>
 
-@stop
-
-
-@section('styles')
-
-	<link rel="stylesheet" href="{{ asset('css/summernote.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 @stop
 
 

@@ -1,5 +1,12 @@
 @extends('layout')
 
+@section('styles')
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+
+@stop
+
+
 @section('content')
 
 @include('includes.errors') 
@@ -76,12 +83,6 @@
 
 @stop
 
-
-@section('styles')
-
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
-
-@stop
 
 
 @section('scripts')
