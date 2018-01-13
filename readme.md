@@ -269,8 +269,9 @@ http://laraproject.dev
 * [X] Add Modal box for Projects and User creation
 * [X] Add lightbox to image gallery
 * [X] Clean filenames before uploading: blank spaces, dots
-* [ ] Add FileManager package for file uploads
-* [ ] Add custom class options for uploaded images
+* [X] Add FileManager package for file uploads
+* [X] Add custom class options for uploaded images
+* [ ] Add User token confirmation Emails
 
 ### Screenshots
 
