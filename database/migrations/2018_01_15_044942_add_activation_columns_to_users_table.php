@@ -14,7 +14,8 @@ class AddActivationColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->boolean('active')->default(false) ; 
+            $table->string('activation_token')->nullable() ;
         });
     }
 
@@ -26,7 +27,7 @@ class AddActivationColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumns('active', 'activation_token') ;
         });
     }
 }

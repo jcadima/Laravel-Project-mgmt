@@ -271,6 +271,7 @@ http://laraproject.dev
 * [X] Clean filenames before uploading: blank spaces, dots
 * [X] Add FileManager package for file uploads
 * [X] Add custom class options for uploaded images
+* [ ] Add autocomplete search
 * [ ] Add User token confirmation Emails
 
 ### Screenshots
