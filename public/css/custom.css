@@ -186,6 +186,15 @@ ul#images_col li {
     padding-bottom: 10px;
 }
 
+button#search-btn {
+    background: #2f3343;
+}
+
+ul.dropdown-menu {
+    background: #e85e2e;
+    color: #fff;
+}
+
 /*  =================== MEDIA QUERIES ================== */
 
 

@@ -8,17 +8,17 @@
     </div>
 
     <div class="col-md-6">
-        <form action="{{ route('task.search') }}" class="navbar-form" role="search" method="GET">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search in Tasks..." name="search_task">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">
-                        <span class="glyphicon glyphicon-search">
-                            <span class="sr-only">Search...</span>
-                        </span>
-                    </button>
-                </span>
-            </div>
+      <form action="{{ route('task.search') }}" method="get" name="main_search_form" class="navbar-form">
+        <div class="input-group">
+
+            <input autocomplete="off" type="text" placeholder="Search Tasks" class="form-control" name="task_search" id="task_search">
+            <span class="input-group-btn">
+            <button type="submit"  id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                        </button>
+            </span>
+        </div>
+
+
         </form>
     </div> 
 
@@ -92,4 +92,38 @@
 </div>
 
 
+@stop
+
+@section('scripts')
+<!-- TYPE AHEAD LIB -->
+<script src="{{ asset('js/typeahead.min.js') }}"></script>
+
+<script>
+
+$(document).ready(function() {
+    $('#task_search').on('keyup', function(e){
+        if(e.which == 13){
+            $('#main_search_form').submit();
+        }
+    });
+    $.get("/main-search-autocomplete", function(data){
+        $("#task_search").typeahead({
+            "items": "all", // Number of Items
+            "source": data,
+            "autoSelect": false,
+            displayText: function(item){
+                console.log('returning item: ' + item.task_title ) ;
+                return item.task_title;
+            },
+
+            updater: function(item) {
+              // http://laratubedemo.test/admin/videos/search?video_search=Code+Geass+Op1
+                window.location.href = '{{ route('task.search') }}?task_search=' + item.task_title.split(' ').join('+') ;
+            }
+
+        });
+    },'json');
+});
+
+</script>
 @stop

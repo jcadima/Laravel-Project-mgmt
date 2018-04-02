@@ -19,6 +19,11 @@ Route::get('/', function () {
 	return redirect('/login') ;
 });
 
+Route::get('/main-search-autocomplete', function(){
+    return json_encode(DB::table('tasks')->get()->all() );
+});
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 

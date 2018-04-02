@@ -293,11 +293,13 @@ class TaskController extends Controller
 /*===============================================
     SEARCH TASK
 ===============================================*/
-    public function searchTask() {
-        $value = Input::get('search_task');
-        $tasks = Task::where('task', 'LIKE', '%' . $value . '%')->limit(25)->get();
-
-        return view('task.search', compact('value', 'tasks')  ) ;
+    public function searchTask()
+    {
+        $value = Input::get('task_search');
+        // Search Inside the Contents of a task
+        $tasks = Task::where('task_title', 'LIKE', '%' . $value . '%')->limit(25)->get();
+        return view('task.search')->with('value', $value)
+                                  ->with('tasks', $tasks) ;
     }
 
 
