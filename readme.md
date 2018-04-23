@@ -77,7 +77,7 @@ sudo vim /etc/hosts
 ```
 and create a new entry for your project:
 ```
-127.0.0.1  laraproject.dev
+127.0.0.1  laraproject.test
 ```
 
 4) open your vhosts file to create a [Virtual host](http://juancadima.com/creating-a-virtual-host-in-xampp-linux/) for this new entry, depending on your system your **httpd-vhosts.conf** might be located in one of the following:
@@ -92,7 +92,7 @@ and add at the bottom of the file
 ```
 # LARAVEL PROJECT TASK MANAGER 
 <VirtualHost *:80>
-  ServerName laraproject.dev    
+  ServerName laraproject.test    
   DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs/laraproject/public"
      <Directory "/Applications/XAMPP/xamppfiles/htdocs/laraproject/public">
          Options Indexes FollowSymLinks Includes ExecCGI
@@ -105,7 +105,7 @@ and add at the bottom of the file
 5) restart Apache , and you will be able to load the project at the specified dev. URL above, in this case:
 
 ```
-http://laraproject.dev
+http://laraproject.test
 ```
 
 ### ROUTES
@@ -276,11 +276,10 @@ http://laraproject.dev
 
 ### Screenshots
 
-![alt LoginDemo](http://juancadima.com/wp-content/uploads/login.jpg)
 <br/>
 ![alt AllTasks](http://juancadima.com/wp-content/uploads/alltasks.jpg)
 <br/>
-![alt CreateTask](http://juancadima.com/wp-content/uploads/createtask.jpg)
+![alt CreateTask](http://juancadima.com/wp-content/uploads/filemanager.png)
 <br/>
 ![alt ActiveProjects](http://juancadima.com/wp-content/uploads/listofactiveprojects.png)
 <br/>
