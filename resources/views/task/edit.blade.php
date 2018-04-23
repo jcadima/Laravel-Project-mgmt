@@ -4,11 +4,25 @@
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 @stop
 
+
 @section('content')
+
 
 <form action="{{ route('task.update', [ 'id' => $task->id ] ) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
 	<input type="hidden" name="task_id" value="{{ $task->id }}">
+
+<!--
+    @foreach( $projects as $project)
+    <hr>
+    	<strong>Project Name: </strong> {{ $project->project_name }} 
+    	<strong>Project ID: </strong> {{ $project->id }} 
+    	<strong>Task->Project->ID: </strong> {{  $task->project->id }}
+
+    <hr>
+    @endforeach
+-->
+
 
     <div class="col-md-8">
 
@@ -18,18 +32,18 @@
 		</div>
 
 		<div class="form-group">
-        <label>Add Files (png,gif,jpeg,jpg,txt,pdf,doc) <span class="glyphicon glyphicon-file" aria-hidden="true"></span></label>			
+        <label>Add Project Files (png,gif,jpeg,jpg,txt,pdf,doc) <span class="glyphicon glyphicon-file" aria-hidden="true"></span></label>
            	<input type="file" class="form-control" name="photos[]" multiple>
        	</div>
 
     	<div class="form-group">
     		<label>Edit task</label>
-			<textarea class="form-control" rows="5" id="summernote" name="task">{{ $task->task }}</textarea>
+			<textarea class="form-control my-editor" rows="5" id="task" name="task">{{ $task->task }}</textarea>
 		</div>
 
 		<div class="form-group">
 		@if( count($taskfiles) > 0  )
-		<label>Project Files</label>
+		<label>Files</label>
 		<ul class="fileslist">
            	@foreach( $taskfiles as $file) 
 			    <li>{{ $file->filename }} <span>&nbsp;&nbsp;</span> <a class="btn btn-danger" href="{{ route('task.deletefile', [ 'id' => $file->id]) }}">
@@ -131,26 +145,70 @@
 @stop
 
 
+
 @section('scripts')
-	<script src="{{ asset('js/summernote.min.js') }}"></script>  
 
     <script src="{{ asset('js/moment.js') }}"></script> 
 
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>  
 
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
 	<script>
-		jQuery(document).ready(function() {
-		  jQuery('#summernote').summernote({ height: 300 });
-		});
 
 		jQuery('#datetimepicker1').datetimepicker( {
 			defaultDate:'now',  // defaults to today
-			format: 'YYYY-MM-DD hh:mm:ss',  // YEAR-MONTH-DAY hour:minute:seconds
-			minDate:new Date()  // Disable previous dates, minimum is todays date
+			format: 'YYYY-MM-DD hh:mm:ss'   // YEAR-MONTH-DAY hour:minute:seconds
+			// minDate:new Date()  // Disable previous dates, minimum is todays date
 		});
 
 	</script>
 
+<script>
+  var editor_config = {
+    //path_absolute : "/",
+    path_absolute:"{{ url('/') }}/",
+    selector: "textarea.my-editor",
+    plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars code fullscreen",
+      "insertdatetime media nonbreaking save table contextmenu directionality",
+      "emoticons template paste textcolor colorpicker textpattern"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+    relative_urls: false,
+    file_browser_callback : function(field_name, url, type, win) {
+      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+      var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+
+      var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+      if (type == 'image') {
+        cmsURL = cmsURL + "&type=Images";
+      } else {
+        cmsURL = cmsURL + "&type=Files";
+      }
+
+      tinyMCE.activeEditor.windowManager.open({
+        file : cmsURL,
+        title : 'Filemanager',
+        width : x * 0.8,
+        height : y * 0.8,
+        resizable : "yes",
+        close_previous : "no"
+      });
+    },
+
+    //  Add Bootstrap Image Responsive class for inserted images
+    image_class_list: [
+        {title: 'None', value: ''},
+        {title: 'Bootstrap responsive image', value: 'img-responsive'},
+    ]
+
+  };
+
+  tinymce.init(editor_config);
+</script>
+ 
 
 
 

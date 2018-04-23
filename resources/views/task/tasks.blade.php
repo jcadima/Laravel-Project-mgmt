@@ -2,13 +2,19 @@
 
 @section('content')
 
+<!--   /views/task/task/tasks.blade.php   -->
 <div class="row">
     <div class="col-md-6">
         <h1>ALL TASKS</h1>
     </div>
 
     <div class="col-md-6">
+
+        <!-- search form (Optional) -->
+
       <form action="{{ route('task.search') }}" method="get" name="main_search_form" class="navbar-form">
+
+
         <div class="input-group">
 
             <input autocomplete="off" type="text" placeholder="Search Tasks" class="form-control" name="task_search" id="task_search">
@@ -20,6 +26,7 @@
 
 
         </form>
+
     </div> 
 
 </div>
@@ -30,7 +37,7 @@
       <tr>
         <th>Created At</th>
         <th><a href="{{ route('task.sort', [ 'key' => 'task' ]) }}">Task Title <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span> </a></th>
-        <th>Assigned To</th>
+        <th>Assigned To / Project</th>
         <th><a href="{{ route('task.sort', [ 'key' => 'priority' ]) }}">Priority <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span> </a></th>
         <th><a href="{{ route('task.sort', [ 'key' => 'completed' ]) }}">Status <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span> </a></th>
         <th>Actions</th>
@@ -48,9 +55,10 @@
          
             @foreach( $users as $user) 
                 @if ( $user->id == $task->user_id )
-                    <a href="{{ route('user.list', [ '' => $user->id ]) }}">{{ $user->name }}</a>
+                    <a href="{{ route('user.list', [ 'id' => $user->id ]) }}">{{ $user->name }}</a>
                 @endif
             @endforeach
+            <span class="label label-jc">{{ $task->project->project_name }}</span>
 
         </td>
 
@@ -68,6 +76,9 @@
             @else
                 <span class="label label-success">Completed</span>
             @endif
+  
+            
+
         </td>
         <td>
             <a href="{{ route('task.view', ['id' => $task->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
@@ -90,7 +101,6 @@
 
 </table>
 </div>
-
 
 @stop
 

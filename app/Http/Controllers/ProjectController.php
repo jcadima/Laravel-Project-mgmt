@@ -41,16 +41,26 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // dd( $request->all()  ) ;
-        $this->validate( $request, [
-            'project' => 'required'
-        ] ) ;        
-
-        $project_new = new Project;
-        $project_new->project_name = $request->project;
-        $project_new->save() ;
-        Session::flash('success', 'Project Created') ;
-        return redirect()->route('project.show') ;
+        $projects_count = Project::count() ;
+      
+        if ( $projects_count < 10  ) {  
+            
+            // dd( $request->all()  ) ;
+            $this->validate( $request, [
+                'project' => 'required'
+            ] ) ;        
+    
+            $project_new = new Project;
+            $project_new->project_name = $request->project;
+            $project_new->save() ;
+            Session::flash('success', 'Project Created') ;
+            return redirect()->route('project.show') ;
+        }
+        
+        else {
+            Session::flash('info', 'Please delete some projects, Demo max: 10') ;
+            return redirect()->route('project.show') ;          
+        }
     }
 
     /**
@@ -72,7 +82,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit_project =  Project::find($id) ;
+        return view('project.edit')->with('edit_project', $edit_project)  ;
     }
 
     /**
@@ -84,7 +95,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_project = Project::find($id) ;
+        $update_project->project_name = $request->name;
+        $update_project->save() ;
+        Session::flash('success', 'Project was sucessfully edited') ;
+        return redirect()->route('project.show') ;
     }
 
     /**
@@ -95,7 +110,11 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        // Session::flash('success', 'Project was deleted') ;
+        $delete_project = Project::find($id) ;
+        $delete_project->delete() ;
+        Session::flash('success', 'Project was deleted and tasks associated with it') ;
+        return redirect()->back();        
+        
     }
 
 }

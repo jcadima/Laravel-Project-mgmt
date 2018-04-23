@@ -21,7 +21,7 @@ task_view->id: {{ $task_view->id }}<br>
 
     <div class="btn-group">
         <a href="{{ route('task.edit', ['id' => $task_view->id ]) }}" class="btn btn-primary"> edit </a>
-        <a class="btn btn-default" href="{{ route('task.show')  }}">Go Back</a>
+        <a class="btn btn-default" href="{{ route('task.show') }}">Go Back</a>
     </div>
 
     <div class="row">
@@ -53,7 +53,7 @@ task_view->id: {{ $task_view->id }}<br>
             <div class="col-md-6">
 
                 <div class="panel panel-jc">
-                    <div class="panel-heading">Uploaded Files</div>
+                    <div class="panel-heading"> Uploaded Files</div>
                     <div class="panel-body">
                         <ul id="images_col">
                             @foreach ( $files_set as $file )
@@ -98,21 +98,6 @@ task_view->id: {{ $task_view->id }}<br>
         </div>
     </div>
 
-    <div class="panel panel-jc">
-        <div class="panel-heading">Status</div>
-        <div class="panel-body">
-            @if ( $task_view->completed == 0 )
-                <span class="label label-warning">Open</span>
-                @if ( $is_overdue )
-                    <span class="label label-danger">Overdue</span>
-                @else
-                    <p><br>{{ $diff_in_days }} days left to complete this task</p>
-                @endif                
-            @else
-                <span class="label label-success">Closed</span>
-            @endif
-        </div>
-    </div>
 
 
     <div class="panel panel-jc">
@@ -130,6 +115,22 @@ task_view->id: {{ $task_view->id }}<br>
     </div>
 
 
+    <div class="panel panel-jc">
+        <div class="panel-heading">Status</div>
+        <div class="panel-body">
+            @if ( $task_view->completed == 0 )
+                <span class="label label-warning">Open</span>
+                @if ( $is_overdue )
+                    <span class="label label-danger">Overdue</span>
+                @else
+                    <p><br>{{ $diff_in_days }} days left to complete this task</p>
+                @endif                
+            @else
+                <span class="label label-success">Closed</span>
+            @endif
+        </div>
+    </div>
+
 </div>
 
 @stop
@@ -143,7 +144,5 @@ task_view->id: {{ $task_view->id }}<br>
     <script src="{{ asset('js/lightbox.min.js') }}"></script>  
 
 @stop
-
-
 
 

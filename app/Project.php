@@ -11,7 +11,7 @@ class Project extends Model
     	'project_name'
     ] ;
 
-    // this project has many tasks - One to Many
+
     public function tasks() {
     	return $this->hasMany('App\Task');
     }

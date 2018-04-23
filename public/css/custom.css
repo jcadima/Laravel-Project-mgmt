@@ -38,7 +38,8 @@ nav#myNavbar a {
 }
 
 ul.dropdown-menu {
-    background: #2e3244;
+    background: #fff;
+    color: #000;
 }
 
 .dropdown-menu>li>a:hover {

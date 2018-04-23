@@ -41,21 +41,16 @@
                     <ul class="nav navbar-nav">
                         <!-- <li><a href="#">Home</a></li>  --> 
 
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Users <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ route('user.index') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
-                                <li><a href="{{ route('user.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new User</a></li>
-                            </ul>
+                        <li>
+                            <a href="{{ route('user.index') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a>
+                        </li>
+                                                            
+
+                        <li>
+                            <a href="{{ route('project.show') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Projects</a>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Projects <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ route('project.show') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> All Projects</a></li>
-                                <li><a href="{{ route('project.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new Project</a></li>
-                            </ul>
-                        </li>
+
 
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Tasks <b class="caret"></b></a>
@@ -100,11 +95,11 @@
         </nav>
 
         <section class="main-content">
-	        <div class="container">   
-	           
-	                @yield('content')
-	            
-	        </div>
+        <div class="container">   
+           
+                @yield('content')
+            
+        </div>
         </section>
 
         <!--   FOOTER -->
@@ -123,7 +118,7 @@
 
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">
 
                     <div class="design">
 

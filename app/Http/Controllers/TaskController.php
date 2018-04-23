@@ -14,26 +14,29 @@ use Illuminate\Support\Facades\Input;
 
 class TaskController extends Controller
 {
-
 /*===============================================
-    DISPLAY ALL TASKS
+    INDEX
 ===============================================*/
     public function index()
     {
+
         $users =  User::all() ; 
         $tasks  = Task::orderBy('created_at', 'desc')->paginate(10) ;  // Paginate Tasks 
+
         return view('task.tasks')->with('tasks', $tasks) 
                                  ->with('users', $users ) ;
+                             
     }
 
 /*===============================================
-    DISPLAY TASK LIST
+    LIST Tasks
 ===============================================*/
     public function tasklist( $projectid ) {
 
         // dd($projectid);
         $users =  User::all() ;
         $p_name = Project::find($projectid) ;
+        // ->get()  will return a collection
         $task_list = Task::where('project_id','=' , $projectid)->get();
         return view('task.list')->with('users', $users) 
                                 ->with('p_name', $p_name)
@@ -41,7 +44,7 @@ class TaskController extends Controller
     }
 
 /*===============================================
-    VIEW TASK
+    VIEW Task
 ===============================================*/
     public function view($id)  {
         $images_set = [] ;
@@ -52,6 +55,7 @@ class TaskController extends Controller
 
         if ( count($taskfiles) > 0 ) { 
             foreach ( $taskfiles as $taskfile ) {
+
                 // explode the filename into 2 parts: the filename and the extension
                 $taskfile = explode(".", $taskfile->filename ) ;
                 // store images only in one array
@@ -65,6 +69,8 @@ class TaskController extends Controller
                     $files_set[] = $taskfile[0] . '.' . $taskfile[1]; 
             }
         }
+
+
 
         $task_view = Task::find($id) ;
 
@@ -101,7 +107,7 @@ class TaskController extends Controller
     }
 
 /*===============================================
-    SORT TASKS BY COLUM KEY
+    SORT TASKS
 ===============================================*/
     public function sort( $key ) {
         $users = User::all() ;
@@ -123,7 +129,7 @@ class TaskController extends Controller
     }
 
 /*===============================================
-    CREATE NEW TASK
+    CREATE TASK
 ===============================================*/
     public function create()
     {
@@ -134,7 +140,7 @@ class TaskController extends Controller
     }
 
 /*===============================================
-    SAVE TASK TO DB
+    STORE NEW TASK
 ===============================================*/
     public function store(Request $request)
     {
@@ -168,15 +174,14 @@ class TaskController extends Controller
             if( $request->hasFile('photos') ) {
                 foreach ($request->photos as $file) {
 
-                    // remove whitespaces and dots from filenames : [' ' => '', '.' => ''] 
                     $filename = strtr( pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME) , [' ' => '', '.' => ''] ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
-                    $file->move('images', $filename);
+                    $file->move('images',$filename);
 
                     // save to DB
                     TaskFiles::create([
                         'task_id'  => $task->id, // newly created ID
                         'filename' => $filename  // For Regular Public Images
-                        //'filename' => $filename[1]  // [0] => public, [1] => wKZsF9ltDSNj82ynh.png FOR STORAGE
+
                     ]);
                 }
             }
@@ -193,7 +198,7 @@ class TaskController extends Controller
     }
 
 /*===============================================
-    MARK TASK COMPLETE
+    MARK TASK AS COMPLETED
 ===============================================*/
     public function completed($id)
     {
@@ -208,6 +213,7 @@ class TaskController extends Controller
 ===============================================*/
     public function edit($id)
     {
+        // $task_list = Task::where('project_id','=' , $projectid)->get();
         $task = Task::find($id)  ; 
         $taskfiles = TaskFiles::where('task_id', '=', $id)->get() ;
         // dd($taskfiles) ;
@@ -227,7 +233,6 @@ class TaskController extends Controller
     {
         // dd( $request->all() ) ;
         $update_task = Task::find($id) ;
-        // dd( $update_task->id ) ;
 
         $this->validate( $request, [
             'task_title' => 'required',
@@ -248,6 +253,7 @@ class TaskController extends Controller
             foreach ($request->photos as $file) {
                 // remove whitespaces and dots in filenames : [' ' => '', '.' => ''] 
                 $filename = strtr( pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME) , [' ' => '', '.' => ''] ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+
                 $file->move('images',$filename);
 
                 // save to DB
@@ -258,7 +264,6 @@ class TaskController extends Controller
             }        
         }
 
-
         $update_task->save() ;
         
         Session::flash('success', 'Task was sucessfully edited') ;
@@ -266,7 +271,7 @@ class TaskController extends Controller
     }
 
 /*===============================================
-    DELETE
+    DESTROY TASK
 ===============================================*/
     public function destroy($id)
     {
@@ -284,7 +289,7 @@ class TaskController extends Controller
         // remove  file from public directory
         unlink( public_path() . '/images/' . $delete_file->filename ) ;
 
-        // delete  from database        
+        // delete entry from database
         $delete_file->delete() ;
         Session::flash('success', 'File Deleted') ;
         return redirect()->back(); 
@@ -301,6 +306,5 @@ class TaskController extends Controller
         return view('task.search')->with('value', $value)
                                   ->with('tasks', $tasks) ;
     }
-
 
 }

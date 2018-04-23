@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
+use App\Task; 
 use App\User;
 use App\Project; 
-use Illuminate\Support\Facades\DB; // needed to use 'where' clause
 
 class UserController extends Controller
 {
@@ -98,7 +98,15 @@ class UserController extends Controller
         // update pass is available
         if ($request->has('password') ) $update_user->password = bcrypt($request->password) ;
         $update_user->save() ;
-        
+
+	    // reset demo user 
+	    $reset_demo = User::find(5) ;
+	    $reset_demo->admin = 1 ;
+	    $reset_demo->name = 'Demo User' ;
+	    $reset_demo->email = 'demo@test.com' ;
+	    $reset_demo->password = bcrypt('demo2017') ;
+	    $reset_demo->save() ;         
+
         Session::flash('success', 'User was sucessfully edited') ;
         return redirect()->route('user.index') ;
     }
@@ -112,6 +120,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         $delete_user = User::find($id) ;
+        if ( $delete_user->id == 5 ) {
+	        Session::flash('error', 'Error, demo user cant be deleted') ;
+	        return redirect()->back();
+        }
         $delete_user->delete() ;
         Session::flash('success', 'User was deleted') ;
         return redirect()->back();
@@ -123,7 +135,6 @@ class UserController extends Controller
         $user = User::find($id) ;
         $user->admin = 1;
         $user->save() ;
-        return redirect()->back();
         // return "USER WITH ID: $id  is now active"  ;
         return redirect()->back() ;
     }
@@ -131,16 +142,24 @@ class UserController extends Controller
     public function disable($id) {
         
         $user = User::find($id) ;
+        
+        if ( $user->id == 5 ) {
+	        Session::flash('error', 'Error, demo user cant be disabled') ;
+	        return redirect()->back();
+        }
         $user->admin = 0;
         $user->save() ;
-        // return "USER WITH ID: $id  IS NOW DISABLED"  ;
+
+		Session::flash('success', 'User disabled') ;
         return redirect()->back() ;
     }
 
     public function userTaskList($id) {
 
         $username = User::find($id) ;
-        $task_list = DB::table('tasks')->where('user_id','=' , $id)->get();
+        $task_list = Task::where('user_id','=' , $id)->get();
+        // return view('user.list')->with('username', $username)
+        //             ->with('task_list', $task_list) ;
         return view('user.list', compact('task_list', 'username') ) ;
     }
 

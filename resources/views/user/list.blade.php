@@ -8,7 +8,7 @@
     <thead>
       <tr>
         <th>Task Title</th>
-
+        <th>Project Name</th>
         <th>Priority</th>
         <th>Status</th>
         <th>Actions</th>
@@ -20,6 +20,7 @@
     @foreach ( $task_list as $task)
       <tr>
         <td>{{ $task->task_title }} </td>
+        <td>{{ $task->project->project_name }}</td>
         <td>
             @if ( $task->priority == 0 )
                 <span class="label label-info">Normal</span>
