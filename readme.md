@@ -276,7 +276,7 @@ http://laraproject.test
 
 ### Screenshots
 
-<br/>
+
 ![alt AllTasks](http://juancadima.com/wp-content/uploads/alltasks.jpg)
 <br/>
 ![alt CreateTask](http://juancadima.com/wp-content/uploads/filemanager.png)
