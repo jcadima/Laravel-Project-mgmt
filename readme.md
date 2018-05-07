@@ -272,6 +272,7 @@ http://laraproject.test
 * [X] Add FileManager package for file uploads
 * [X] Add custom class options for uploaded images
 * [ ] Add autocomplete search
+* [ ] Nested Comment System
 * [ ] Add User token confirmation Emails
 
 ### Screenshots
