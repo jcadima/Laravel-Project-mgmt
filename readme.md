@@ -23,7 +23,7 @@ composer install
 
 
 (3a) Import database and modify your .env file
-[Task Management DB](https://github.com/jcadima/Laravel-Project-mgmt/blob/master/project_mgmt.sql)
+[Task Management DB](https://github.com/jcadima/Laravel-Project-mgmt/blob/master/lara_project.sql)
 
 **NOTE**: If using MariaDB you might see an error about "key too long", to fix this open:
 ```
