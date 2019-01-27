@@ -107,7 +107,6 @@
     </script>
 
 <script>
-  console.log(" {{ url('/') }}" ) ;
   var editor_config = {
     //path_absolute : "/",
     path_absolute:"{{ url('/') }}/",

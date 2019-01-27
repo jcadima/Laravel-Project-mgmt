@@ -1,2 +1,4 @@
-#Ignore folder mac
 .DS_Store
+vendor/
+.vscode/
+.idea/

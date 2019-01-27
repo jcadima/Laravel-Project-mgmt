@@ -3166,6 +3166,7 @@ return array(
     'Unisharp\\Laravelfilemanager\\middlewares\\CreateDefaultFolder' => $vendorDir . '/unisharp/laravel-filemanager/src/middlewares/CreateDefaultFolder.php',
     'Unisharp\\Laravelfilemanager\\middlewares\\MultiUser' => $vendorDir . '/unisharp/laravel-filemanager/src/middlewares/MultiUser.php',
     'Unisharp\\Laravelfilemanager\\traits\\LfmHelpers' => $vendorDir . '/unisharp/laravel-filemanager/src/traits/LfmHelpers.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
     'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlock.php',

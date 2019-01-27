@@ -12,8 +12,6 @@
 
         <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}" />
 
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
         <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -44,12 +42,31 @@
                         <li>
                             <a href="{{ route('user.index') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a>
                         </li>
+
+                        <!--
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Users <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('user.index') }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
+                                <li><a href="{{ route('user.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new User</a></li>
+                            </ul>
+                        </li>
+                        -->
                                                             
 
                         <li>
                             <a href="{{ route('project.show') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Projects</a>
                         </li>
 
+                        <!--
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Projects <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('project.show') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> All Projects</a></li>
+                                <li><a href="{{ route('project.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new Project</a></li>
+                            </ul>
+                        </li>
+                        -->
 
 
                         <li class="dropdown">
@@ -112,7 +129,7 @@
 
                     <div class="copyright">
 
-                        © 2017, JC Web Development, All rights reserved
+                        © 2017, JC Web Development
 
                     </div>
 
@@ -151,6 +168,11 @@
 
 @if ( Session::has('info') )
     toastr.info("{{ Session::get('info') }}")
+@endif
+
+
+@if ( Session::has('error') )
+    toastr.error("{{ Session::get('error') }}")
 @endif
 
 </script>

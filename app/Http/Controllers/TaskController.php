@@ -19,13 +19,17 @@ class TaskController extends Controller
 ===============================================*/
     public function index()
     {
-
+        // dd() ;
+        // $tasks = Task::all() ;  // retrieve all Tasks
         $users =  User::all() ; 
         $tasks  = Task::orderBy('created_at', 'desc')->paginate(10) ;  // Paginate Tasks 
-
+        // dd($tasks) ;
+        // pass is_overdue
+        // $today = \Carbon\Carbon::now() ; // not used
+        // dd ($today) ;
         return view('task.tasks')->with('tasks', $tasks) 
                                  ->with('users', $users ) ;
-                             
+                                //  ->with('today', $today) ;
     }
 
 /*===============================================
@@ -173,7 +177,16 @@ class TaskController extends Controller
             // Then save files using the newly created ID above
             if( $request->hasFile('photos') ) {
                 foreach ($request->photos as $file) {
+                    // To Storage
+                    //$filename = $file->store('public'); // /storage/app/public
 
+                    // filename will be saved as: public/wKZsF9ltDSNj82ynh.png
+                    // explode this value at / and get the second element
+                    // $filename = explode("/", $filename ) ; // FOR STORAGE
+
+                    // If you want to save into  /public/images
+                   // $filename = str_replace(' ' , '' , time() . '_' .$file->getClientOriginalName() );  // get original file name ex:   cat.jpg
+                    // remove whitespaces and dots in filenames : [' ' => '', '.' => ''] 
                     $filename = strtr( pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME) , [' ' => '', '.' => ''] ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
                     $file->move('images',$filename);
 
@@ -181,7 +194,7 @@ class TaskController extends Controller
                     TaskFiles::create([
                         'task_id'  => $task->id, // newly created ID
                         'filename' => $filename  // For Regular Public Images
-
+                        //'filename' => $filename[1]  // [0] => public, [1] => wKZsF9ltDSNj82ynh.png FOR STORAGE
                     ]);
                 }
             }
@@ -213,13 +226,23 @@ class TaskController extends Controller
 ===============================================*/
     public function edit($id)
     {
+// $project::find(1)->tasks; retrieves the project record with id 1 and lists all tasks that have the project_id 1.
+
         // $task_list = Task::where('project_id','=' , $projectid)->get();
         $task = Task::find($id)  ; 
         $taskfiles = TaskFiles::where('task_id', '=', $id)->get() ;
         // dd($taskfiles) ;
         $projects = Project::all() ;
         $users = User::all() ;
+        //$project_edit = Project::find($id)->tasks ; 
+        // echo '<pre>';
+        // print_r( Project::all() );
+        // echo '</pre>';
 
+        // dd($task_edit) ;  // returns NULL
+
+        //dd($task_edit) ;  // Works
+        //$project_edit = Project::find($id) ;
         return view('task.edit')->with('task', $task)
                                 ->with('projects', $projects ) 
                                 ->with('users', $users)
@@ -233,6 +256,7 @@ class TaskController extends Controller
     {
         // dd( $request->all() ) ;
         $update_task = Task::find($id) ;
+        // dd( $update_task->id ) ;
 
         $this->validate( $request, [
             'task_title' => 'required',
@@ -253,7 +277,10 @@ class TaskController extends Controller
             foreach ($request->photos as $file) {
                 // remove whitespaces and dots in filenames : [' ' => '', '.' => ''] 
                 $filename = strtr( pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME) , [' ' => '', '.' => ''] ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+               // $filename = str_replace(' ' , '' , pathinfo( time() . '_' . $file->getClientOriginalName(), PATHINFO_FILENAME)   ) . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);  // get original file name ex:   cat.jpg
+              //  echo 'filename: ' . $filename ; 
 
+               // dd ($filename) ; 
                 $file->move('images',$filename);
 
                 // save to DB
@@ -298,13 +325,12 @@ class TaskController extends Controller
 /*===============================================
     SEARCH TASK
 ===============================================*/
-    public function searchTask()
-    {
-        $value = Input::get('task_search');
-        // Search Inside the Contents of a task
-        $tasks = Task::where('task_title', 'LIKE', '%' . $value . '%')->limit(25)->get();
-        return view('task.search')->with('value', $value)
-                                  ->with('tasks', $tasks) ;
+    public function searchTask() {
+        $value = Input::get('search_task');
+        $tasks = Task::where('task', 'LIKE', '%' . $value . '%')->limit(25)->get();
+
+        return view('task.search', compact('value', 'tasks')  ) ;
     }
+
 
 }

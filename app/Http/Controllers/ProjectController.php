@@ -117,4 +117,13 @@ class ProjectController extends Controller
         
     }
 
+    // does not work see  /app/Http/Controllers/Auth/LoginController.php
+    // public function logout () {
+    //     //logout user
+    //     auth()->logout();
+    //     // redirect to homepage or login
+    //     return redirect('/login');
+    // }
+
+
 }
