@@ -21,8 +21,12 @@ git clone https://github.com/jcadima/Laravel-Project-mgmt.git
 composer install
 ```
 
+(3) Run migrations
+```
+php artisan migrate
+```
 
-(3a) Import database and modify your .env file
+(4a) Import database and modify your .env file
 [Task Management DB](https://github.com/jcadima/Laravel-Project-mgmt/blob/master/laraproject.sql)
 
 **NOTE**: If using MariaDB you might see an error about "key too long", to fix this open:
@@ -60,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
 OR
 
 
-(3b) Run the database seeder:
+(4b) Run the database seeder:
 
 ```
 php artisan db:seed
@@ -79,7 +83,7 @@ The project already includes a UsersTableSeeder.php class with the following:
 ```
 
 ## If you are using something like Xampp
-(4) open your hosts file:
+(5) open your hosts file:
 ```
 sudo vim /etc/hosts
 ```
@@ -88,7 +92,7 @@ and create a new entry for your project:
 127.0.0.1  laraproject.test
 ```
 
-(4a) open your vhosts file to create a [Virtual host](http://juancadima.com/creating-a-virtual-host-in-xampp-linux/) for this new entry, depending on your system your **httpd-vhosts.conf** might be located in one of the following:
+(6a) open your vhosts file to create a [Virtual host](http://juancadima.com/creating-a-virtual-host-in-xampp-linux/) for this new entry, depending on your system your **httpd-vhosts.conf** might be located in one of the following:
 
 ```
 sudo vim /opt/lampp/etc/httpd.conf  OR
@@ -110,7 +114,7 @@ and add at the bottom of the file
 </VirtualHost>
 ```
 
-(4c) restart Apache , and you will be able to load the project at the specified dev. URL above, in this case:
+(6b) restart Apache , and you will be able to load the project at the specified dev. URL above, in this case:
 
 ```
 http://laraproject.test
@@ -120,7 +124,7 @@ http://laraproject.test
 ## If you are using Homestead
 Note: If you need to install Homestead: 
 [Laravel - Homestead](https://laravel.com/docs/5.7/homestead) <br>
-(5) open your Homestead.yaml file and see if it looks something like:
+(7) open your Homestead.yaml file and see if it looks something like:
 ```
 ip: "192.168.10.10"
 memory: 2048
@@ -145,7 +149,7 @@ databases:
 ```
 
 
-(5a) open your /etc/hosts and add an entry for this project (note the IP above in the Homestead.yaml file):
+(8) open your /etc/hosts and add an entry for this project (note the IP above in the Homestead.yaml file):
 
 ```
 # Homestead
@@ -158,7 +162,7 @@ Now launch the Vagrant Box:
 vagrant up
 ```
 
-(5c) Your dev project will be available at:
+(9) Your dev project will be available at:
 
 ```
 http://laraproject.test
