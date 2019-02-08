@@ -71,6 +71,7 @@ The project already includes a UsersTableSeeder.php class with the following:
 
 ```php
         App\User::create([
+            'admin' => 1,
             'name' => 'Demo User',
             'email' => 'demo@test.com',
             'password' => bcrypt('demo2017') 
