@@ -9,7 +9,6 @@
 
 @font-face {
     font-family: Montserrat;
-    font-style: bold;
     font-weight: 700;
     src: url('gfonts/Montserrat-Bold.ttf');
 }
@@ -26,7 +25,7 @@ html, body {
 }
 
 body#app {
-    background: url(http://taskmanager.juancadima.com/img/bodybg-min.png);
+    background: url(/img/bodybg-min.png);
 }
 
 .navbar-default {

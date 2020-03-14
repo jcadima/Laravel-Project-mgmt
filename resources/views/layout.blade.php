@@ -129,7 +129,7 @@
 
                     <div class="copyright">
 
-                        © 2017, JC Web Development
+                        © 2020, JC
 
                     </div>
 
@@ -139,7 +139,7 @@
 
                     <div class="design">
 
-                        <a target="_blank" href="http://juancadima.com">Design and Development by JC Web Development</a>
+                        <a target="_blank" href="http://juancadima.com">Design and Development by JC</a>
 
                     </div>
 

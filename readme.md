@@ -3,7 +3,7 @@
 A simple task manager app built with Laravel 5.4.33
   
 ### Demo
-[Task Management Demo](http://taskmanager.juancadima.com/)
+[Task Management Demo](http://laraprojectmgmt.herokuapp.com/)
 
 
 ### Demo login info:
@@ -332,21 +332,11 @@ http://laraproject.test
 * [X] Clean filenames before uploading: blank spaces, dots
 * [X] Add FileManager package for file uploads
 * [X] Add custom class options for uploaded images
-* [ ] Add autocomplete search
 
 ### Screenshots
 
 
-![alt AllTasks](http://juancadima.com/wp-content/uploads/alltasks.jpg)
+![alt AllTasks](https://jcadima.dev/images/projects.png)
 <br/>
-![alt CreateTask](http://juancadima.com/wp-content/uploads/filemanager.png)
-<br/>
-![alt ActiveProjects](http://juancadima.com/wp-content/uploads/listofactiveprojects.png)
-<br/>
-![alt ActiveProjects](http://juancadima.com/wp-content/uploads/newproject.png)
-<br>
-![alt TaskView](http://juancadima.com/wp-content/uploads/singletask.png)
-<br/>
-![alt TaskView](http://juancadima.com/wp-content/uploads/users.png)
-<br>
-![alt TaskView](http://juancadima.com/wp-content/uploads/newuser.png)
+![alt CreateTask](https://jcadima.dev/images/tasks.png)
+
