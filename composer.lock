@@ -400,7 +400,7 @@
                 "symfony/console": "~3.2",
                 "symfony/debug": "~3.2",
                 "symfony/finder": "~3.2",
-                "symfony/http-foundation": "~3.2",
+                "symfony/http-foundation": "3.4.35",
                 "symfony/http-kernel": "~3.2",
                 "symfony/process": "~3.2",
                 "symfony/routing": "~3.2",
