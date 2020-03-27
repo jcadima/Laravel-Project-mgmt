@@ -8,7 +8,7 @@ A simple task manager app built with Laravel 5.4.33
 
 ### Demo login info:
 user: demo@test.com <br/>
-pass: demo2017
+pass: demo2020
 
 ### How to install 🤔
 (1). Simply [download](https://github.com/jcadima/Laravel-Project-mgmt/archive/master.zip) or clone the repo:
