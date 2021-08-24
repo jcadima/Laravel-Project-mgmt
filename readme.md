@@ -2,14 +2,7 @@
 
 A simple task manager app built with Laravel 5.4.33
   
-### Demo
-[Task Management Demo](http://laraprojectmgmt.herokuapp.com/)
-
-
-### Demo login info:
-user: demo@test.com <br/>
-pass: demo2020
-
+### *** New Livewire Version with TailwindCSS coming soon ***
 ### How to install 🤔
 (1). Simply [download](https://github.com/jcadima/Laravel-Project-mgmt/archive/master.zip) or clone the repo:
 ```
