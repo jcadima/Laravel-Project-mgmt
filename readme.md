@@ -76,49 +76,12 @@ The project already includes a UsersTableSeeder.php class with the following:
         ]);
 ```
 
-## If you are using something like Xampp
-(5) open your hosts file:
-```
-sudo vim /etc/hosts
-```
-and create a new entry for your project:
-```
-127.0.0.1  laraproject.test
-```
-
-(6a) open your vhosts file to create a [Virtual host](http://juancadima.com/creating-a-virtual-host-in-xampp-linux/) for this new entry, depending on your system your **httpd-vhosts.conf** might be located in one of the following:
-
-```
-sudo vim /opt/lampp/etc/httpd.conf  OR
-sudo vim /Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf
-```
-
-and add at the bottom of the file
-
-```
-# LARAVEL PROJECT TASK MANAGER 
-<VirtualHost *:80>
-  ServerName laraproject.test    
-  DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs/laraproject/public"
-     <Directory "/Applications/XAMPP/xamppfiles/htdocs/laraproject/public">
-         Options Indexes FollowSymLinks Includes ExecCGI
-         AllowOverride All
-         Require all granted
-      </Directory>
-</VirtualHost>
-```
-
-(6b) restart Apache , and you will be able to load the project at the specified dev. URL above, in this case:
-
-```
-http://laraproject.test
-```
 
 
-## If you are using Homestead
+## Using Homestead
 Note: If you need to install Homestead: 
 [Laravel - Homestead](https://laravel.com/docs/5.7/homestead) <br>
-(7) open your Homestead.yaml file and see if it looks something like:
+(5) open your Homestead.yaml file and see if it looks something like:
 ```
 ip: "192.168.10.10"
 memory: 2048
@@ -143,7 +106,7 @@ databases:
 ```
 
 
-(8) open your /etc/hosts and add an entry for this project (note the IP above in the Homestead.yaml file):
+(6) open your /etc/hosts and add an entry for this project (note the IP above in the Homestead.yaml file):
 
 ```
 # Homestead
@@ -156,7 +119,7 @@ Now launch the Vagrant Box:
 vagrant up
 ```
 
-(9) Your dev project will be available at:
+(7) Your dev project will be available at:
 
 ```
 http://laraproject.test
@@ -303,34 +266,4 @@ http://laraproject.test
 | updated_at     | timestamp        | YES  |     | NULL    |                |
 +----------------+------------------+------+-----+---------+----------------+
 ```
-
-
-### Todos && Features
-* [X] Create Models
-* [X] Create blade includes
-* [X] Assign Tasks to Project
-* [X] Assign Task Priority
-* [X] Assign Task Status
-* [X] Add Toastr Notifications
-* [X] Implement Cascade down on delete
-* [X] Delete associated tasks that belong to a user
-* [X] Add/Edit/Delete Tasks
-* [X] Sort by column
-* [X] Multiple File Upload
-* [X] Demo Login
-* [X] Added Summernote WYSIWYG editor for Task view
-* [X] Add Pagination
-* [X] Restrict new user registration (Admin approval)
-* [X] Add Modal box for Projects and User creation
-* [X] Add lightbox to image gallery
-* [X] Clean filenames before uploading: blank spaces, dots
-* [X] Add FileManager package for file uploads
-* [X] Add custom class options for uploaded images
-
-### Screenshots
-
-
-![alt AllTasks](https://jcadima.dev/images/projects.png)
-<br/>
-![alt CreateTask](https://jcadima.dev/images/tasks.png)
 
